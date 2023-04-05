@@ -1,12 +1,19 @@
 const express = require('express')
 require('dotenv').config()
+const database = require('./database');
 const app = express()
 const port = 3000
 
-console.log(process.env)
 
 app.get('/', (req, res) => {
   res.send('Hello World! get')
+})
+
+app.get('/kandidatet', (req, res) => {
+  database.query('SELECT * FROM kandidatet', (err, results)=> {
+    if(err) throw err;
+    res.send(results);
+  })
 })
 
 
