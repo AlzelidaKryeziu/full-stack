@@ -72,3 +72,25 @@ app.delete('/komunat/fshij/:id', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
+
+//1. Shto profesoret
+app.post('/profesoret', (req, res)=> {
+  console.log(req.body)
+  /*const emri = req.body.emri;
+  const mbiemri = req.body.mbiemri;
+  const numri_i_leternjoftimit = req.body.numri_i_leternjoftimit;
+  const vendi_i_lindjes = req.body.vendi_i_lindjes;
+  const komunaid = req.body.komunaid;
+  const adresa = req.body.adresa;
+  const telefoni = req.body.telefoni;
+  const emaili = req.body.emaili;
+  const statusi = req.body.statusi;*/
+  database.query(`INSERT INTO Profesoret (emri, mbiemri, numri_i_leternjoftimit, vendi_i_lindjes, komunaid, adresa, telefoni, emaili, statusi)
+   VALUES ('${req.body.emri}','${req.body.mbiemri}','${req.body.numri_i_leternjoftimit}','${req.body.vendi_i_lindjes}','${req.body.komunaid}',
+  '${req.body.adresa}','${req.body.telefoni}','${req.body.emaili}','${req.body.statusi}')`, 
+  (err, results)=> {
+    if (err) throw err;
+    res.send(`Profesori u shtua me sukses`);
+  });
+
+  })
