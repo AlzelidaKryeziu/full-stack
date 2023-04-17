@@ -129,3 +129,10 @@ app.get('/txt/delete', (req, res ) => {
     console.log('File Deleted Successfully.')
   });
 });
+
+app.get('/images/read', (req,res)=>{
+  const imagePath = __dirname + '/public/images/test.png';
+  const stream = fs.createReadStream(imagePath);
+  res.contentType('image/png');
+  stream.pipe(res);
+})
