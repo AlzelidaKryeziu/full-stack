@@ -144,3 +144,11 @@ fs.mkdir(__dirname + '/public/images/testmkdir', (err)=>{
     console.log('Directory deleted successfully.');
   }
 });
+
+fs.rmdir(__dirname + '/public/images/testmkdir', (err) => {
+  if(err){
+    console.log(err);
+  }else{
+    console.log('Directory deleted successfully.');
+  }
+})
