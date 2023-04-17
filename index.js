@@ -2,6 +2,7 @@ const express = require('express')
 require('dotenv').config()
 const database = require('./database');
 const app = express()
+const fs = require('fs');
 const port = 3000
 
 
@@ -94,3 +95,28 @@ app.post('/profesoret', (req, res)=> {
   });
 
   })
+
+  app.get('/json', (req, res)=>{
+
+    fs.readFile(__diname + '/public/json/test.json', 'utf8', (err,  data) => {
+        if (err) {
+          console.error(err);
+          res.status(500).send('Error reading file');
+        }else {
+          //send the file contents as the response
+          res.send(data);
+        }
+      });
+    });
+
+
+
+
+app.get('/txt/write', (req, res) => {
+    fs.writeFile(__dirname + '/public/txt/test2.txt', 'Hello World', function (err){
+        if (err)
+            console.log(err);
+        else
+            res.send('Write operation complete.')
+    });
+});
