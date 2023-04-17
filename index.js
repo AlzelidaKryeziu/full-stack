@@ -21,6 +21,8 @@ app.get('/kandidatet/:id', (req, res) => {
 
   //Per te mar te dhena nga body
 const bodyParser = require('body-parser');
+const { setFlagsFromString } = require('v8');
+const { getgid } = require('process');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -119,4 +121,11 @@ app.get('/txt/write', (req, res) => {
         else
             res.send('Write operation complete.')
     });
+});
+
+
+app.get('/txt/delete', (req, res ) => {
+  fs.unlink(__dirname + '/public/txt/test.txt', function () {
+    console.log('File Deleted Successfully.')
+  });
 });
