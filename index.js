@@ -152,3 +152,9 @@ fs.rmdir(__dirname + '/public/images/testmkdir', (err) => {
     console.log('Directory deleted successfully.');
   }
 })
+
+//serving static files in Express
+//app.use(express.static('public'))
+app.use(express.static(__dirname + '/public/pdf'));
+app.use('/public/pdf', express.static(__dirname + '/public/pdf'));//Do të shfaq imazhe nga dosja e imazheve për çdo kërkesë HTTP që fillon me "/images"
+app.use(express.static('public'))
