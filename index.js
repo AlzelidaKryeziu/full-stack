@@ -136,3 +136,11 @@ app.get('/images/read', (req,res)=>{
   res.contentType('image/png');
   stream.pipe(res);
 })
+
+fs.mkdir(__dirname + '/public/images/testmkdir', (err)=>{
+  if (err){
+    console.error(err);
+  }else {
+    console.log('Directory deleted successfully.');
+  }
+});
