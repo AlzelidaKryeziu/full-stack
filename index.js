@@ -4,7 +4,10 @@ const database = require('./database');
 const app = express()
 const fs = require('fs');
 const port = 3000
+const userRouters = require('./routers/users')
 
+
+app.use('/api/users', userRouters)
 
 app.get('/', (req, res) => {
   res.send('Hello World! get')
