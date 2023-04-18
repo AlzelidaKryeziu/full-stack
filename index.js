@@ -5,9 +5,13 @@ const app = express()
 const fs = require('fs');
 const port = 3000
 const userRouters = require('./routers/users')
+const komunatRouters = require('./routers/komunat')
 
 
 app.use('/api/users', userRouters)
+
+app.use('/komunat', komunatRouters)
+
 
 app.get('/', (req, res) => {
   res.send('Hello World! get')
