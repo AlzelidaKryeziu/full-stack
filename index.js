@@ -6,7 +6,22 @@ const fs = require('fs');
 const port = 3000
 const userRouters = require('./routers/users')
 const komunatRouters = require('./routers/komunat')
+const bodyParser = require('body-parser');
 
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+function test(req, res, next){
+  console.log(req.body)
+  console.log('This is my middleware');
+  if(req.body.emri){
+    res.status(400).send('No!')
+  }
+  next()
+}
+
+app.use(test)
 
 app.use('/api/users', userRouters)
 
